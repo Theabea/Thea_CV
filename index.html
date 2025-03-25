@@ -6,19 +6,21 @@
     <title>Thea's UX Portfolio</title>
     <style>
         :root {
-            --primary-color: #4a6fa5;
+            --primary-color: #4361ee;
+            --primary-light: #4895ef;
             --secondary-color: #f8f9fa;
-            --text-color: #333;
+            --text-color: #2b2d42;
             --light-gray: #e9ecef;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
@@ -27,12 +29,18 @@
             line-height: 1.6;
         }
         
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         header {
             background-color: var(--white);
             box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 100;
+            animation: fadeIn 0.6s ease-out;
         }
         
         nav {
@@ -40,14 +48,15 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary-color);
+            letter-spacing: -0.5px;
         }
         
         .nav-links {
@@ -56,74 +65,159 @@
         }
         
         .nav-links li {
-            margin-left: 2rem;
+            margin-left: 2.5rem;
+            position: relative;
         }
         
         .nav-links a {
             text-decoration: none;
             color: var(--text-color);
             font-weight: 500;
-            transition: color 0.3s;
+            transition: var(--transition);
+            padding: 0.5rem 0;
         }
         
         .nav-links a:hover {
             color: var(--primary-color);
         }
         
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
         .hero {
             text-align: center;
-            padding: 5rem 1rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 6rem 1rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            font-weight: 700;
+            line-height: 1.2;
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
+            color: #4a5568;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
             color: var(--white);
-            padding: 0.7rem 1.5rem;
-            border-radius: 5px;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: var(--transition);
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
         
         .btn:hover {
-            background-color: #3a5a80;
+            background-color: var(--primary-light);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 4rem 2rem;
         }
         
         section {
-            margin-bottom: 3rem;
+            margin-bottom: 5rem;
+            animation: fadeIn 0.8s ease-out;
         }
         
         h2 {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            bottom: -10px;
+            left: 25%;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
         }
         
         .about-content {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 2rem;
+            gap: 3rem;
+            background-color: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
         }
         
         .about-text {
@@ -131,42 +225,58 @@
             min-width: 300px;
         }
         
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        
         .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
         
         .skill {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--white);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
             font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(67, 97, 238, 0.2);
+            transition: var(--transition);
         }
         
-        /* Updated Projects Section - Stacked Layout */
+        .skill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
         .projects-stacked {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
-            max-width: 1000px;
+            gap: 3rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
         
         .project-item {
             background-color: var(--white);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: transform 0.3s;
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .project-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .project-content {
@@ -178,33 +288,41 @@
         .project-image {
             flex: 1;
             min-width: 300px;
+            overflow: hidden;
         }
         
         .project-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            min-height: 250px;
+            min-height: 300px;
+            transition: var(--transition);
+        }
+        
+        .project-item:hover .project-image img {
+            transform: scale(1.05);
         }
         
         .project-info {
             flex: 1;
             min-width: 300px;
-            padding: 2rem;
+            padding: 2.5rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
         
         .project-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-color);
+            font-weight: 700;
         }
         
         .project-info p {
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #4a5568;
         }
         
         .project-links {
@@ -213,86 +331,115 @@
         }
         
         .project-links a {
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: var(--transition);
         }
         
         .demo-btn {
             background-color: var(--primary-color);
             color: var(--white);
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
         }
         
         .demo-btn:hover {
-            background-color: #3a5a80;
+            background-color: var(--primary-light);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+            transform: translateY(-2px);
         }
         
         .code-btn {
-            background-color: var(--light-gray);
-            color: var(--text-color);
-            border: 1px solid #ddd;
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
         }
         
         .code-btn:hover {
-            background-color: #ddd;
+            background-color: rgba(67, 97, 238, 0.1);
+            transform: translateY(-2px);
         }
         
         .contact-form {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
             background-color: var(--white);
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 3rem;
+            border-radius: 12px;
             box-shadow: var(--shadow);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--text-color);
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 0.7rem;
+            padding: 1rem;
             border: 1px solid var(--light-gray);
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
         }
         
         .form-group textarea {
-            min-height: 150px;
+            min-height: 180px;
+            resize: vertical;
         }
         
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem;
             background-color: var(--white);
             margin-top: 2rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.03);
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin: 1rem 0;
+            gap: 2rem;
+            margin: 1.5rem 0;
         }
         
         .social-links a {
             color: var(--text-color);
-            font-size: 1.5rem;
-            transition: color 0.3s;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
         
         .social-links a:hover {
-            color: var(--primary-color);
+            color: var(--white);
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        footer p {
+            color: #718096;
         }
         
         @media (max-width: 768px) {
@@ -301,7 +448,7 @@
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
@@ -319,8 +466,17 @@
             .project-info {
                 order: 2;
             }
+            
+            .about-content {
+                padding: 2rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -335,9 +491,11 @@
     </header>
     
     <section class="hero">
-        <h1>Hello, I'm Thea Mikkelsen</h1>
-        <p>A passionate student showcasing my academic projects and learning journey</p>
-        <a href="#projects" class="btn">My Projects</a>
+        <div class="hero-content">
+            <h1>Hello, I'm Thea Mikkelsen</h1>
+            <p>A passionate UX designer and engineer creating intuitive, human-centered solutions</p>
+            <a href="#projects" class="btn">Explore My Work</a>
+        </div>
     </section>
     
     <div class="container">
@@ -345,39 +503,39 @@
             <h2>About Me</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>I'm a Civil Engineer with a Master’s in Engineering Psychology, specializing in user-centered design. My passion lies at the intersection of psychology, engineering, and UX/UI—creating intuitive products that improve lives. I thrive in collaborative teams, blending analytical and creative thinking to solve real-world problems.</p>
+                    <p>I'm a Civil Engineer with a Master's in Engineering Psychology, specializing in user-centered design. My passion lies at the intersection of psychology, engineering, and UX/UI—creating intuitive products that improve lives. I thrive in collaborative teams, blending analytical and creative thinking to solve real-world problems.</p>
                     <p>Outside work, I dive into knitting, 3D printing, and DIY projects, or stay active with walks, gym sessions, and sports with friends.</p>
                     
-                    <h3 style="margin-top: 1.5rem;">My Skills</h3>
+                    <h3 style="margin-top: 2rem;">My Skills</h3>
                     <div class="skills">
                         <span class="skill">Design Thinking</span>
-                        <span class="skill">User Experience Design</span>
-                        <span class="skill">Statistics</span>
-                        <span class="skill">Project Management</span>
-                        <span class="skill">Problem Solving</span>
-                        <span class="skill">UI Design</span>
-                        <span class="skill">HTML/CSS</span>
-                        <span class="skill">JavaScript</span>
+                        <span class="skill">User Research</span>
+                        <span class="skill">UX/UI Design</span>
+                        <span class="skill">Prototyping</span>
+                        <span class="skill">Usability Testing</span>
+                        <span class="skill">Front-end Dev</span>
+                        <span class="skill">Data Analysis</span>
+                        <span class="skill">3D Modeling</span>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="projects">
-            <h2>My Projects</h2>
+            <h2>Featured Projects</h2>
             <div class="projects-stacked">
                 <!-- Project 1 -->
                 <div class="project-item">
                     <div class="project-content">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/600x400?text=E-Commerce+Project" alt="E-Commerce Website">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="UX Research Dashboard">
                         </div>
                         <div class="project-info">
-                            <h3>E-Commerce Website</h3>
-                            <p>A fully responsive e-commerce platform built with React and Node.js, featuring product listings, cart functionality, and user authentication. This project helped me understand full-stack development and state management in complex applications.</p>
+                            <h3>Healthcare UX Dashboard</h3>
+                            <p>Designed and tested an analytics dashboard for healthcare professionals, reducing task completion time by 40% through improved information architecture and data visualization. Conducted user interviews and iterative prototyping to create this solution.</p>
                             <div class="project-links">
-                                <a href="#" class="demo-btn" target="_blank">Live Demo</a>
-                                <a href="#" class="code-btn" target="_blank">View Code</a>
+                                <a href="#" class="demo-btn" target="_blank">Case Study</a>
+                                <a href="#" class="code-btn" target="_blank">View Prototype</a>
                             </div>
                         </div>
                     </div>
@@ -387,14 +545,14 @@
                 <div class="project-item">
                     <div class="project-content">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/600x400?text=Student+Management+System" alt="Student Management System">
+                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mobile App Design">
                         </div>
                         <div class="project-info">
-                            <h3>Student Management System</h3>
-                            <p>A Java application for managing student records, grades, and attendance with a user-friendly GUI and database integration. This was my first experience with object-oriented programming principles and database design.</p>
+                            <h3>Sustainable Shopping App</h3>
+                            <p>A mobile application that helps users make eco-friendly purchasing decisions by scanning product barcodes and providing sustainability ratings. The project involved user journey mapping, A/B testing different UI approaches, and creating animated micro-interactions.</p>
                             <div class="project-links">
                                 <a href="#" class="demo-btn" target="_blank">View Demo</a>
-                                <a href="#" class="code-btn" target="_blank">View Code</a>
+                                <a href="#" class="code-btn" target="_blank">Design Files</a>
                             </div>
                         </div>
                     </div>
@@ -404,20 +562,18 @@
                 <div class="project-item">
                     <div class="project-content">
                         <div class="project-image">
-                            <img src="https://via.placeholder.com/600x400?text=Weather+App" alt="Weather Application">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="3D Printed Product">
                         </div>
                         <div class="project-info">
-                            <h3>Weather App</h3>
-                            <p>A weather application that fetches real-time data from an API and displays it with clean visuals, built with JavaScript. This project taught me how to work with external APIs and handle asynchronous operations.</p>
+                            <h3>Ergonomic Kitchen Tool</h3>
+                            <p>Combined 3D modeling and user testing to develop an ergonomic kitchen utensil for arthritis patients. The design process included observational research, rapid prototyping, and material testing to create a comfortable, functional product.</p>
                             <div class="project-links">
-                                <a href="#" class="demo-btn" target="_blank">Live Demo</a>
-                                <a href="#" class="code-btn" target="_blank">View Code</a>
+                                <a href="#" class="demo-btn" target="_blank">View Project</a>
+                                <a href="#" class="code-btn" target="_blank">Process Book</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Add more projects as needed -->
             </div>
         </section>
         
@@ -437,7 +593,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
+                    <button type="submit" class="btn" style="width: 100%;">Send Message</button>
                 </form>
             </div>
         </section>
@@ -446,13 +602,14 @@
     <footer>
         <div class="social-links">
             <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-behance"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-dribbble"></i></a>
         </div>
-        <p>&copy; 2023 My Student Portfolio. All rights reserved.</p>
+        <p>&copy; 2023 Thea Mikkelsen. All rights reserved.</p>
     </footer>
     
-    <!-- Font Awesome for icons (you need internet connection for this to work) -->
+    <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
