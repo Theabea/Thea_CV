@@ -6,8 +6,8 @@
     <title>Thea's UX Portfolio</title>
     <style>
         :root {
-            --primary-color: #4361ee;
-            --primary-light: #4895ef;
+            --primary-color: #089d7f;
+            --primary-light: #00FFCC;
             --secondary-color: #f8f9fa;
             --text-color: #2b2d42;
             --light-gray: #e9ecef;
@@ -99,9 +99,13 @@
         .hero {
             text-align: center;
             padding: 6rem 1rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
             position: relative;
             overflow: hidden;
+
+            background-image: url('Background.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
         
         .hero::before {
@@ -111,7 +115,7 @@
             right: -50px;
             width: 200px;
             height: 200px;
-            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
             z-index: 0;
         }
         
@@ -122,7 +126,7 @@
             left: -100px;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(67, 97, 238, 0.1) 0%, rgba(0,0,0,0) 70%);
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
             z-index: 0;
         }
         
@@ -150,14 +154,14 @@
         
         .btn {
             display: inline-block;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: var(--white);
             padding: 0.8rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             transition: var(--transition);
             font-weight: 500;
-            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
             border: none;
             cursor: pointer;
             position: relative;
@@ -342,12 +346,12 @@
         .demo-btn {
             background-color: var(--primary-color);
             color: var(--white);
-            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
         }
         
         .demo-btn:hover {
             background-color: var(--primary-light);
-            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+            box-shadow: 0 6px 15px rgba(0, 255, 204, 0.4);
             transform: translateY(-2px);
         }
         
@@ -358,7 +362,7 @@
         }
         
         .code-btn:hover {
-            background-color: rgba(67, 97, 238, 0.1);
+            background-color: rgba(0, 255, 204, 0.1);
             transform: translateY(-2px);
         }
         
@@ -446,7 +450,7 @@
         }
         
         footer p {
-            color: #718096;
+            color: #71968f;
         }
         
         @media (max-width: 768px) {
@@ -512,19 +516,19 @@
     
     <section class="hero">
         <div class="hero-content">
-            <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px; text-align: center; order: 1;">
-                    <img src="CV_pic_wBack.png" alt="Thea Mikkelsen" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover; box-shadow: var(--shadow);">
-                </div>
-                <div style="flex: 1; min-width: 300px; text-align: left; order: 2;">
-                    <h1 style="font-size: 3rem; color: var(--primary-color);">Hi, I'm <span style="color: var(--primary-light);">Thea Mikkelsen</span></h1>
-                    <h2 style="font-size: 2rem; color: var(--text-color); margin: 1rem 0;">UX Designer & Engineer</h2>
-                    <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">I specialize in creating intuitive, human-centered solutions that blend engineering and design principles.</p>
-                    <a href="#projects" class="btn">Explore My Work</a>
-                </div>
+          <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px; text-align: center; order: 1;">
+              <img src="CV_pic_wBack.png" alt="Thea Mikkelsen" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover; box-shadow: var(--shadow);">
             </div>
+            <div style="flex: 1; min-width: 300px; text-align: left; order: 2;">
+              <h1 style="font-size: 3rem; color: var(--text-color);">Hi, I'm Thea<span style="color: var(--primary-color);"> Mikkelsen</span></h1>
+              <h2 style="font-size: 2rem; color: var(--text-color); margin: 1rem 0;">UX Designer & Engineer</h2>
+              <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">I specialize in creating intuitive, human-centered solutions that blend engineering and design principles.</p>
+              <a href="#projects" class="btn">Explore My Work</a>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
     
     <div class="container">
         <section id="about">
@@ -562,7 +566,7 @@
                             <h3>Redesign of a learning platform for medical students</h3>
                             <p>We conducted usability testing and a heuristic evaluation to identify key design challenges in the existing learning platform. Using established design principles and guidelines, we redesigned the platform to enhance the user experience. The new design was then tested with medical students to evaluate its effectiveness. Today, the redesigned simulation tool is the version used by medical students at Aalborg University (AAU) for learning about Type 2 diabetes.</p>
                             <div class="project-links">
-                                <a href="https://www.t2d.aau.dk/" class="demo-btn" target="_blank">Veiw Website</a>
+                                <a href="https://www.t2d.aau.dk/" class="btn" target="_blank">Veiw Website</a>
                                 
                             </div>
                         </div>
@@ -580,9 +584,9 @@
                             <p>In my master’s thesis, in collaboration with LINAK, I explored how healthcare professionals use patient lifts through observational studies and how emerging technologies could improve their operation. The key challenge isn’t the handheld interface itself, but how lifts often obstruct workflows.
 
                                 I focused on innovative solutions, investigating how new technologies could be integrated into healthcare to create a more functional and efficient system. The developed concepts were tested with users to evaluate their fit into daily routines and identify further refinements for smoother workflows.</p>
-                            <div class="project-links">
-                                <a href="#" class="demo-btn" target="_blank">View Prototype</a>
-                            </div>
+                            <!-- <div class="project-links">
+                                <a href="#" class="btn" target="_blank">View Prototype</a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -597,7 +601,7 @@
                             <h3>Design and front-end implementation of UI for a Mars Rover</h3>
                             <p>Developing a UI for a Mars Rover for a Space Robotics team at AAU. The purpose of the project was to learn HTML, CSS and Javascript to be better at knowing the design limitations and possibilities in digital design.</p>
                             <div class="project-links">
-                                <a href="https://theabea.github.io/Course-test/site/index.html" class="demo-btn" target="_blank">View Website</a>
+                                <a href="https://theabea.github.io/Course-test/site/index.html" class="btn" target="_blank">View Website</a>
                             </div>
                         </div>
                     </div>
@@ -612,9 +616,9 @@
                         <div class="project-info">
                             <h3>The Interaction and Usage of Health and Fitness Smartwatches </h3>
                             <p>We conducted a longitudinal study in collaboration with Firstbeat Analytics (Garmin) to assess user interactions and the overall experience of using Garmin smartwatches in daily life, exploring challenges that could only be identified when users interacted with the product outside of a controlled testing environment. In addition, we redesigned the Garmin Connect app to address user challenges, informed by a heuristic evaluation and usability testing. The project concluded with valuable insights shared with Garmin, which were well received.</p>
-                            <div class="project-links">
-                                <a href="#" class="demo-btn" target="_blank">View Prototype</a>
-                            </div>
+                            <!-- <div class="project-links">
+                                <a href="#" class="btn" target="_blank">View Prototype</a>
+                            </div> -->
                         </div>
                             </div>
                         </div>
@@ -623,14 +627,14 @@
                 <div class="project-item">
                     <div class="project-content">
                         <div class="project-image">
-                            <img src="Beer.png" alt="Mobile App Design">
+                            <img src="Beer .png" alt="Mobile App Design">
                         </div>
                         <div class="project-info">
                             <h3>Understanding Sensory Perception: Bridging the Language Gap Between Novice and Expert Beer Consumers</h3>
                             <p>Our research focuses on the psychological aspects of how humans describe sensory stimuli. In collaboration with our research partners, we conducted a descriptive analysis to explore how novices articulate their experiences with beer. The goal was to develop a shared language that bridges the gap between novice and expert beer consumers, facilitating clearer communication and a deeper appreciation of beer characteristics.</p>
-                            <div class="project-links">
-                                <a href="#" class="demo-btn" target="_blank">View Paper</a>
-                            </div>
+                            <!-- <div class="project-links">
+                                <a href="#" class="btn" target="_blank">View Paper</a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -645,7 +649,7 @@
                                     <h3>Developing a robotic arm controlled via hand tracking</h3>
                                     <p>During the project, we developed a robotic arm controlled via hand tracking using a Leap Motion device. Designed as an extension of the user’s arm, it could perform tasks in places inaccessible to the user. The goal was to deepen our understanding of the hardware behind the design and solutions, providing valuable experience for future hardware implementations.</p>
                                     <div class="project-links">
-                                        <a href="https://www.youtube.com/shorts/UQkJbRe-ovI" class="demo-btn" target="_blank">View Prototype</a>
+                                        <a href="https://www.youtube.com/shorts/UQkJbRe-ovI" class="btn" target="_blank">View Prototype</a>
                                     </div>
                                 </div>
                             </div>
