@@ -4,502 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thea's UX Portfolio</title>
-    <style>
-        :root {
-            --primary-color: #089d7f;
-            --primary-light: #00FFCC;
-            --secondary-color: #f8f9fa;
-            --text-color: #2b2d42;
-            --light-gray: #e9ecef;
-            --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        
-        body {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2.5rem;
-            position: relative;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 6rem 1rem;
-            position: relative;
-            overflow: hidden;
-
-            background-image: url('Background.svg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: #4a5568;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-light);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        section {
-            margin-bottom: 5rem;
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-color);
-            font-size: 2.2rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 4px;
-            bottom: -10px;
-            left: 25%;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
-            border-radius: 2px;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 3rem;
-            background-color: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #4a5568;
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .skill {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(67, 97, 238, 0.2);
-            transition: var(--transition);
-        }
-        
-        .skill:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-        }
-        
-        .projects-stacked {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .project-item {
-            background-color: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-content {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        
-        .project-image {
-            flex: 1;
-            min-width: 300px;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            min-height: 300px;
-            transition: var(--transition);
-        }
-        
-        .project-item:hover .project-image img {
-            transform: scale(1.05);
-        }
-        
-        .project-info {
-            flex: 1;
-            min-width: 300px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .project-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-color);
-            font-weight: 700;
-        }
-        
-        .project-info p {
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            color: #4a5568;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-links a {
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .demo-btn {
-            background-color: var(--primary-color);
-            color: var(--white);
-            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
-        }
-        
-        .demo-btn:hover {
-            background-color: var(--primary-light);
-            box-shadow: 0 6px 15px rgba(0, 255, 204, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .code-btn {
-            background-color: var(--white);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-        
-        .code-btn:hover {
-            background-color: rgba(0, 255, 204, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .contact-info {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-        }
-        
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .contact-item a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .contact-item a:hover {
-            color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background-color: var(--white);
-            margin-top: 2rem;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.03);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin: 2rem 0;
-        }
-        
-        .social-links a {
-            text-decoration: none;
-            transition: var(--transition);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-5px);
-        }
-        
-        .social-links i {
-            font-size: 1.8rem;
-            transition: var(--transition);
-        }
-        
-        footer p {
-            color: #71968f;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .project-content {
-                flex-direction: column;
-            }
-            
-            .project-image {
-                order: 1;
-            }
-            
-            .project-info {
-                order: 2;
-            }
-            
-            .about-content {
-                padding: 2rem;
-            }
-            
-            .contact-info {
-                padding: 2rem;
-            }
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-card i {
-            transition: transform 0.3s ease;
-        }
-
-        .contact-card:hover i {
-            transform: scale(1.1);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -552,6 +58,62 @@
                 </div>
             </div>
         </section>
+
+
+
+        <section id="projects">
+            <h2>Work Experience</h2>
+            <div class="projects-stacked">
+                <!-- Work 1 -->
+                <div class="project-item">
+                    <div class="project-content">
+                        <div class="project-image">
+                            <img src="RINA.png" alt="UX Research Dashboard">
+                        </div>
+                        <div class="project-info">
+                            <h3>Junior UX/UI Designer - RINA Digital Solutions</h3>
+                            <p>At RINA Digital Solutions, I am part of the software team developing digital tools for both marine and land-based industries. My primary responsibilities include redesigning existing software components to fit into a new platform, helping ensure a smooth transition and enhanced user experience.
+
+                                I have independently led projects focused on developing new concepts based on user needs. These initiatives aimed to improve usability by simplifying complex workflows and clearly demonstrating the advantages of RINA’s solutions over manual tools like Excel or paper-based processes. To keep users actively involved throughout, I created and conducted questionnaires and interviews as part of the research process.
+                                
+                                A key project involved designing a solution that allows customers to better organize and track the work of individual employees.
+                                
+                                One of the most rewarding aspects of my work has been creating solutions that perform reliably in both traditional office settings and demanding offshore environments.</p>
+                            <div class="project-links">
+                                <a href="https://www.rina.org/en/" class="btn" target="_blank">Veiw RINA Digital Solutions</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Work 2 -->
+                <div class="project-item">
+                    <div class="project-content">
+                        <div class="project-image">
+                            <img src="LINAK.png" alt="Mobile App Design">
+                        </div>
+                        <div class="project-info">
+                            <h3>UX/UI Designer Intern - LINAK A/S</h3>
+                            <p>At LINAK A/S, I was part of the Digital Customer Solutions team, where I specialized in UX design. During my internship, I contributed to the development of both digital and physical products across various departments within the company.
+
+                                Our team followed the Double Diamond design model, and I played a key role in creating a structured illustration that mapped out which methods to apply at each stage of the process.
+                                
+                                One of my main projects involved researching user needs and challenges for an internal service portal. I conducted user interviews, created journey maps, performed card sortings, and carried out usability tests to uncover insights into user workflows. The project resulted in key findings, journey maps, and personas to guide further development.
+                                
+                                Another major project focused on validating a new hand control. I visited end users in the field to conduct interviews and usability tests, helping identify areas for improvement and ensuring the product aligned with user expectations.
+                                
+                                In addition to these core projects, I supported the team with ad hoc tasks such as UI design, software testing, and data analysis of user behavior and interactions on a website.</p>
+                            <div class="project-links">
+                                <a href="#" class="btn" target="_blank">View LINAK</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         
         <section id="projects">
             <h2>Featured Projects</h2>
