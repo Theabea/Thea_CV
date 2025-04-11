@@ -445,6 +445,21 @@
         footer p {
             color: #71968f;
         }
+
+        .animated-line-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+          }
+          
+          .animated-line-bg svg {
+            width: 100%;
+            height: 100%;
+          }
         
         @media (max-width: 768px) {
             .nav-links {
