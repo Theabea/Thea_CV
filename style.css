@@ -46,7 +46,13 @@ body {
     color: var(--text-color);
     line-height: var(--base-line-height);
 
-    
+    background-image: url('BackgroundNew.svg'); /* Sets the image */
+    background-size: cover; /* **This makes the image cover the entire background** */
+    background-repeat: no-repeat; /* **This prevents the image from repeating** */
+    background-position: center; /* Optional: Centers the image */
+
+    /* Optional: Ensure body takes at least full viewport height if content is short */
+    min-height: 100vh;
 }
 
 /* ==========================================================================
@@ -270,7 +276,6 @@ footer {
 .hero {
     position: relative;
     padding: 6rem 1rem;
-    background-image: url('Background.svg'); /* Ensure path is correct */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -395,6 +400,8 @@ h2::after {
     border: 1px solid rgba(0, 0, 0, 0.05);
     overflow: hidden;
     transition: var(--transition);
+
+    
 }
 
 .project-item:hover {
