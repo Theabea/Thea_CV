@@ -1,522 +1,649 @@
-        :root {
-            --primary-color: #089d7f;
-            --primary-light: #00ffcc;
-            --secondary-color: #f8f9fa;
-            --text-color: #2b4240;
-            --light-gray: #e9ecef;
-            --white: #ffffff;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        
-        body {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            letter-spacing: -0.5px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2.5rem;
-            position: relative;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: var(--transition);
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: var(--transition);
-        }
-        
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 6rem 1rem;
-            position: relative;
-            overflow: hidden;
+       /* ==========================================================================
+   1. Variables & Root Configuration
+   ========================================================================== */
 
-            background-image: url('Background.svg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            color: #4a5568;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-light);
-            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .btn:active {
-            transform: translateY(0);
-        }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-        
-        section {
-            margin-bottom: 5rem;
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--text-color);
-            font-size: 2.2rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 4px;
-            bottom: -10px;
-            left: 25%;
-            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
-            border-radius: 2px;
-        }
-        
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 3rem;
-            background-color: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #4a5568;
-        }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .skill {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            color: var(--white);
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 2px 5px rgba(67, 97, 238, 0.2);
-            transition: var(--transition);
-        }
-        
-        .skill:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
-        }
-        
-        .projects-stacked {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .project-item {
-            background-color: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .project-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-content {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-        }
-        
-        .project-image {
-            flex: 1;
-            min-width: 300px;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            min-height: 300px;
-            transition: var(--transition);
-        }
-        
-        .project-item:hover .project-image img {
-            transform: scale(1.05);
-        }
-        
-        .project-info {
-            flex: 1;
-            min-width: 300px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .project-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-color);
-            font-weight: 700;
-        }
-        
-        .project-info p {
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            color: #4a5568;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-        
-        .project-links a {
-            padding: 0.7rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .demo-btn {
-            background-color: var(--primary-color);
-            color: var(--white);
-            box-shadow: 0 4px 10px rgba(0, 255, 204, 0.3);
-        }
-        
-        .demo-btn:hover {
-            background-color: var(--primary-light);
-            box-shadow: 0 6px 15px rgba(0, 255, 204, 0.4);
-            transform: translateY(-2px);
-        }
-        
-        .code-btn {
-            background-color: var(--white);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-        
-        .code-btn:hover {
-            background-color: rgba(0, 255, 204, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        .contact-info {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-        }
-        
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .contact-item a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .contact-item a:hover {
-            color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background-color: var(--white);
-            margin-top: 2rem;
-            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.03);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2.5rem;
-            margin: 2rem 0;
-        }
-        
-        .social-links a {
-            text-decoration: none;
-            transition: var(--transition);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-5px);
-        }
-        
-        .social-links i {
-            font-size: 1.8rem;
-            transition: var(--transition);
-        }
-        
-        footer p {
-            color: #71968f;
-        }
+:root {
+    /* Colors */
+    --primary-color: #089d7f;
+    --primary-light: #00ffcc;
+    --secondary-color: #f8f9fa; /* Background */
+    --text-color: #2b4240;      /* Main text */
+    --secondary-text-color: #4a5568; /* Subdued text (Introduced) */
+    --text-muted-color: #71968f;     /* Footer text (Introduced) */
+    --light-gray: #e9ecef;
+    --white: #ffffff;
 
-        .animated-line-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
-          }
-          
-          .animated-line-bg svg {
-            width: 100%;
-            height: 100%;
-          }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .project-content {
-                flex-direction: column;
-            }
-            
-            .project-image {
-                order: 1;
-            }
-            
-            .project-info {
-                order: 2;
-            }
-            
-            .about-content {
-                padding: 2rem;
-            }
-            
-            .contact-info {
-                padding: 2rem;
-            }
-        }
-        
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
+    /* Effects & Transitions */
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
-        .contact-card i {
-            transition: transform 0.3s ease;
-        }
+    /* Typography (Base font set in reset) */
+    --base-line-height: 1.6;
 
-        .contact-card:hover i {
-            transform: scale(1.1);
-        }
+    /* Layout */
+    --container-max-width: 1400px;
+    --nav-padding-x: 5%;
+    --container-padding-y: 4rem;
+    --container-padding-x: 2rem;
+}
 
-        .hidden-text {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-out;
-          }
-        
-          .hidden-text.show {
-            max-height: 500px;
-          }
+/* ==========================================================================
+   2. Base & Reset Styles
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Added more common fallbacks */
+}
+
+html {
+    scroll-behavior: smooth; /* Optional: Smooth scrolling for anchor links */
+}
+
+body {
+    color: var(--text-color);
+    line-height: var(--base-line-height);
+
+    
+}
+
+/* ==========================================================================
+   3. Keyframes & Animations
+   ========================================================================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   4. Layout Components (Header, Nav, Footer, Container)
+   ========================================================================== */
+
+   header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    /* Removed: background-color: var(--white); */
+    /* Removed: box-shadow: var(--shadow); */
+    animation: fadeIn 0.6s ease-out;
+
+   
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 1rem var(--nav-padding-x);
+
+    /* --- Glass Effect Properties ADDED to Nav --- */
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background (or your chosen color with rgba) */
+    -webkit-backdrop-filter: blur(10px); /* Apply blur for Safari */
+    backdrop-filter: blur(10px); /* Apply blur for other browsers */
+
+    /* Optional: Add rounded corners */
+    border-radius: 10px; /* Consider if you want rounded corners on the nav */
+
+    /* Optional: Subtle border to enhance the effect */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* Optional: Subtle shadow for depth (choose this or your --shadow) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* If you prefer your variable shadow, use: box-shadow: var(--shadow); and remove the line above */
+    /* --------------------------------------------- */
+}
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--container-padding-y) var(--container-padding-x);
+}
+
+section {
+    margin-bottom: 5rem; /* Consider using rem */
+    animation: fadeIn 0.8s ease-out;
+}
+
+footer {
+    margin-top: 2rem; /* Consider standardizing margins */
+    padding: 3rem var(--container-padding-x);
+    background-color: var(--white);
+    text-align: center;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
+   5. Reusable Components (Buttons, Logo, Links, Skills)
+   ========================================================================== */
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-decoration: none; /* Ensure logo is not underlined if it's a link */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    position: relative;
+    margin-left: 2.5rem;
+}
+
+.nav-links a {
+    display: inline-block; /* Allows padding to work correctly */
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Underline effect */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn {
+    display: inline-block;
+    position: relative; /* Needed for z-index and potential pseudo-elements */
+    z-index: 1;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--white);
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3); /* Consider using primary color variable for shadow */
+    cursor: pointer;
+    transition: var(--transition);
+    overflow: hidden; /* For potential effects */
+}
+
+.btn:hover {
+    /* Change background property to override gradient */
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color)); /* Example: Reverse gradient */
+    /* Or use a solid color: background: var(--primary-light); */
+    box-shadow: 0 6px 20px rgba(0, 255, 204, 0.4); /* Consider using primary color variable for shadow */
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3); /* Reset shadow */
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skill {
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(8, 157, 127, 0.2); /* Adjusted shadow color */
+    transition: var(--transition);
+}
+
+.skill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(8, 157, 127, 0.3); /* Adjusted shadow color */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin: 2rem 0;
+}
+
+.social-links a {
+    display: flex; /* Changed from inline-block to flex for centering icon */
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: var(--transition);
+    /* Add background/border if needed */
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+    /* Add hover background/color if desired */
+}
+
+.social-links i { /* Assuming FontAwesome or similar */
+    font-size: 1.8rem;
+    transition: var(--transition);
+    /* Set icon color */
+    color: var(--text-color); /* Example */
+}
+
+.social-links a:hover i {
+    color: var(--primary-color); /* Example hover color */
+}
+
+/* ==========================================================================
+   6. Page Sections (Hero, About, Projects, Contact)
+   ========================================================================== */
+
+/* --- Hero Section --- */
+.hero {
+    position: relative;
+    padding: 6rem 1rem;
+    background-image: url('Background.svg'); /* Ensure path is correct */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    overflow: hidden; /* Keep decorative elements contained */
+}
+
+/* Decorative elements */
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
+    z-index: 0; /* Behind content */
+    border-radius: 50%; /* Ensure they are circles */
+}
+
+.hero::before {
+    top: -50px;
+    right: -50px;
+}
+
+.hero::after {
+    width: 300px; /* Different size */
+    height: 300px;
+    bottom: -100px;
+    left: -100px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1; /* Above decorative elements */
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+    color: var(--secondary-text-color); /* Use variable */
+    font-size: 1.2rem;
+}
+
+/* --- Headings --- */
+h2 {
+    /* Centering technique */
+    position: relative;
+    display: inline-block; /* Or block depending on desired width */
+    left: 50%;
+    transform: translateX(-50%);
+    /* --- */
+    margin-bottom: 3rem;
+    color: var(--text-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center; /* Ensure text is centered if display: block */
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    /* Centering the underline */
+    left: 50%;
+    transform: translateX(-50%);
+    /* --- */
+    width: 60px; /* Or a percentage like 50% */
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+    border-radius: 2px;
+}
+
+/* --- About Section --- */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--secondary-text-color); /* Use variable */
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* --- Projects Section --- */
+.projects-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1100px; /* Consider using var(--container-max-width) or slightly less */
+    margin: 0 auto;
+}
+
+.project-item {
+    display: flex; /* Changed from column to flex for content layout */
+    flex-direction: column; /* Keep overall item stacking */
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-content {
+    display: flex;
+    flex-direction: row; /* Default layout: Image | Info */
+    flex-wrap: wrap; /* Allow stacking on smaller screens if needed */
+}
+
+.project-image {
+    flex: 1; /* Take up half the space */
+    min-width: 300px; /* Minimum width before wrapping */
+    overflow: hidden; /* Ensure image zoom stays contained */
+}
+
+.project-image img {
+    display: block; /* Remove extra space below image */
+    width: 100%;
+    height: 100%;
+    min-height: 300px; /* Ensure image area has height */
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.project-item:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    flex: 1; /* Take up the other half */
+    min-width: 300px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+}
+
+.project-info h3 {
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.project-info p {
+    margin-bottom: 2rem;
+    color: var(--secondary-text-color); /* Use variable */
+    line-height: 1.8;
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+    gap: 1rem;
+    margin-top: auto; /* Push links to the bottom if info content is short */
+}
+
+.project-links a {
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center; /* Ensure text centers if button wraps */
+    transition: var(--transition);
+}
+
+.demo-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(8, 157, 127, 0.3); /* Adjusted shadow color */
+}
+
+.demo-btn:hover {
+    background-color: var(--primary-light); /* Or a darker primary */
+    color: var(--text-color); /* Ensure contrast on light background */
+    box-shadow: 0 6px 15px rgba(0, 255, 204, 0.4); /* Adjusted shadow color */
+    transform: translateY(-2px);
+}
+
+.code-btn {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.code-btn:hover {
+    background-color: rgba(8, 157, 127, 0.1); /* Use primary color alpha */
+    transform: translateY(-2px);
+}
+
+/* --- Contact Section --- */
+.contact-info {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.contact-info h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    transition: var(--transition); /* Add transition for hover */
+}
+
+/* Combined .contact-card styles with .contact-item */
+.contact-item:hover {
+    transform: translateY(-5px);
+    /* Optional: Add subtle shadow on hover for item */
+    /* box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); */
+}
+
+.contact-item a {
+    display: flex; /* Use flex for icon+text alignment */
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--primary-light);
+    /* Removed transform from here, apply to parent .contact-item */
+}
+
+.contact-icon { /* Assuming this is the class on the <i> tag */
+    font-size: 1.5rem;
+    transition: transform 0.3s ease; /* Keep icon transition */
+}
+
+.contact-item:hover .contact-icon { /* Target icon via parent hover */
+    transform: scale(1.1);
+}
+
+footer p {
+    color: var(--text-muted-color); /* Use variable */
+}
+
+
+/* ==========================================================================
+   7. Utility Classes
+   ========================================================================== */
+
+.animated-line-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure it's behind content */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none; /* Prevent interaction */
+}
+
+.animated-line-bg svg {
+    width: 100%;
+    height: 100%;
+    /* Add specific SVG styling here if needed */
+}
+
+/* Simple text hide/show utility (JS required) */
+.hidden-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.hidden-text.show {
+    max-height: 500px; /* Adjust as needed */
+}
+
+
+/* ==========================================================================
+   8. Media Queries & Responsive Design
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* --- Navigation --- */
+    .nav-links {
+        display: none; /* Requires JS for hamburger menu */
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+        padding: 4rem 1rem; /* Adjust padding */
+    }
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* --- Project Section --- */
+    .project-content {
+        flex-direction: column; /* Stack image and info */
+    }
+    .project-image {
+        order: 1; /* Image first */
+    }
+    .project-info {
+        order: 2; /* Info second */
+        padding: 1.5rem; /* Adjust padding */
+    }
+    .project-links {
+        justify-content: center; /* Center buttons when stacked */
+    }
+
+    /* --- General Adjustments --- */
+    h2 {
+        font-size: 1.8rem;
+    }
+    .container {
+        padding: var(--container-padding-y) 1rem; /* Adjust side padding */
+    }
+    .about-content {
+        padding: 2rem;
+        gap: 2rem;
+    }
+    .contact-info {
+        padding: 2rem;
+    }
+}
+
+/* Optional: Larger screen adjustments */
+/* @media (min-width: 1400px) { ... } */
           
           
         
