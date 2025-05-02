@@ -11,7 +11,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Thea's UX Portfolio</div>
+            <a href="#hero" class="logo">Thea's UX Portfolio</a>
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#about">About</a></li>
@@ -20,21 +20,26 @@
         </nav>
     </header>
     
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-          <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px; text-align: center; order: 1;">
-              <img src="CVPic.png" alt="Thea Mikkelsen" style="border-radius: 50%; width: 300px; height: 300px; object-fit: cover; box-shadow: var(--shadow);">
+          <div class="hero-flex">
+            <div class="hero-image-container">
+              <img src="CVPic.png" alt="Thea Mikkelsen" class="hero-image">
             </div>
-            <div style="flex: 1; min-width: 300px; text-align: left; order: 2;">
-              <h1 style="font-size: 3rem; color: var(--text-color);">Hi, I'm Thea<span style="color: var(--primary-color);"> Mikkelsen</span></h1>
-              <h2 style="font-size: 2rem; color: var(--text-color); margin: 1rem 0;">UX Designer & Engineer</h2>
-              <p style="font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem;">I specialize in creating intuitive, human-centered solutions that blend engineering and design principles.</p>
+            <div class="hero-text">
+              <h1 class="hero-title">
+                Hi, I'm Thea <span class="highlight">Mikkelsen</span>
+              </h1>
+              <h2 class="hero-subtitle">UX Designer & Engineer</h2>
+              <p class="hero-description">
+                I specialize in creating intuitive, human-centered solutions that blend engineering and design principles.
+              </p>
               <a href="#projects" class="btn">Explore My Work</a>
             </div>
           </div>
         </div>
       </section>
+      
     
     <div class="container">
         

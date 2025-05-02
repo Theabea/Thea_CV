@@ -280,31 +280,28 @@ footer {
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
-    overflow: hidden; /* Keep decorative elements contained */
+    overflow: hidden;
     margin: 0 auto;
-
-    
 }
 
-/* Decorative elements */
 .hero::before,
 .hero::after {
     content: '';
     position: absolute;
-    width: 200px;
-    height: 200px;
+    border-radius: 50%;
     background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, rgba(0,0,0,0) 70%);
-    z-index: 0; /* Behind content */
-    border-radius: 50%; /* Ensure they are circles */
+    z-index: 0;
 }
 
 .hero::before {
+    width: 200px;
+    height: 200px;
     top: -50px;
     right: -50px;
 }
 
 .hero::after {
-    width: 300px; /* Different size */
+    width: 300px;
     height: 300px;
     bottom: -100px;
     left: -100px;
@@ -312,56 +309,89 @@ footer {
 
 .hero-content {
     position: relative;
-    z-index: 1; /* Above decorative elements */
+    z-index: 1;
     max-width: 800px;
     margin: 0 auto;
-
-    
 }
 
-.hero h1 {
-    margin-bottom: 1.5rem;
+.hero-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-image-container {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    order: 1;
+}
+
+.hero-image {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+    order: 2;
+}
+
+.hero-title {
+    font-size: 3rem;
     color: var(--text-color);
-    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
     font-weight: 700;
     line-height: 1.2;
 }
 
-.hero p {
-    max-width: 700px;
-    margin: 0 auto 2.5rem;
-    color: var(--secondary-text-color); /* Use variable */
-    font-size: 1.2rem;
+.highlight {
+    color: var(--primary-color);
 }
 
-/* --- Headings --- */
+.hero-subtitle {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 1rem 0;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: #4a5568;
+    margin-bottom: 2rem;
+}
+
+/* Optional global heading styling, if used site-wide */
 h2 {
-    /* Centering technique */
     position: relative;
-    display: inline-block; /* Or block depending on desired width */
+    display: inline-block;
     left: 50%;
     transform: translateX(-50%);
-    /* --- */
     margin-bottom: 3rem;
     color: var(--text-color);
     font-size: 2.2rem;
     font-weight: 700;
-    text-align: center; /* Ensure text is centered if display: block */
+    text-align: center;
 }
 
 h2::after {
     content: '';
     position: absolute;
     bottom: -10px;
-    /* Centering the underline */
     left: 50%;
     transform: translateX(-50%);
-    /* --- */
-    width: 60px; /* Or a percentage like 50% */
+    width: 60px;
     height: 4px;
     background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
     border-radius: 2px;
 }
+
 
 /* --- About Section --- */
 .about-content {
