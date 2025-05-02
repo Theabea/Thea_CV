@@ -210,29 +210,6 @@ footer {
     box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3); /* Reset shadow */
 }
 
-.skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.skill {
-    padding: 0.6rem 1.2rem;
-    border-radius: 50px;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-    color: var(--white);
-    font-size: 0.9rem;
-    font-weight: 500;
-    box-shadow: 0 2px 5px rgba(8, 157, 127, 0.2); /* Adjusted shadow color */
-    transition: var(--transition);
-}
-
-.skill:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(8, 157, 127, 0.3); /* Adjusted shadow color */
-}
-
 .social-links {
     display: flex;
     justify-content: center;
@@ -398,41 +375,76 @@ h2::after {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 3rem;
-    padding: 3rem;
-    margin: 2rem;
-    background-color: var(--white);
-    border-radius: 12px;
-    box-shadow: var(--shadow);
-
-    /* --- Glass Effect Properties ADDED to Nav --- */
-    background: rgba(255, 255, 255, 0.6); /* Semi-transparent white background (or your chosen color with rgba) */
-    -webkit-backdrop-filter: blur(10px); /* Apply blur for Safari */
-    backdrop-filter: blur(10px); /* Apply blur for other browsers */
-
-    /* Optional: Add rounded corners */
-    border-radius: 10px; /* Consider if you want rounded corners on the nav */
-
-    /* Optional: Subtle border to enhance the effect */
+    gap: 2rem;
+    padding: 2rem;
+    margin: 1rem;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.8);
-
-    /* Optional: Subtle shadow for depth (choose this or your --shadow) */
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* If you prefer your variable shadow, use: box-shadow: var(--shadow); and remove the line above */
-    /* --------------------------------------------- */
+    box-sizing: border-box; /* ✅ Prevent overflow from padding */
+    overflow-x: hidden;      /* ✅ Prevent any accidental horizontal scroll */
 }
 
-.about-text {
-    flex: 1;
-    min-width: 300px;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-content {
+    padding: 1.5rem 1rem;
+    margin: 1rem;
+    flex-direction: column;
+  }
+
+  .about-text {
+    min-width: 100%;
+  }
+
+  .skills {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }
 
-.about-text p {
-    margin-bottom: 1.5rem;
-    color: var(--secondary-text-color); /* Use variable */
-    font-size: 1.1rem;
-    line-height: 1.8;
+/* Skills should be merged */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .skill {
+    background: var(--primary-light);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
 }
+
+.skill {
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(8, 157, 127, 0.2); /* Adjusted shadow color */
+    transition: var(--transition);
+}
+
+.skill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(8, 157, 127, 0.3); /* Adjusted shadow color */
+}
+
 
 /* --- Projects Section --- */
 .projects-stacked {
@@ -624,12 +636,7 @@ h2::after {
     margin-top: 0.5rem;
 }
 
-/* Hide on screens narrower than 768px */
-@media (max-width: 768px) {
-    .hide-on-mobile {
-      display: none !important;
-    }
-  }
+
   
 
 footer p {
@@ -721,6 +728,13 @@ footer p {
         padding: 2rem;
     }
 }
+
+/* Hide on screens narrower than 768px */
+@media (max-width: 768px) {
+    .hide-on-mobile {
+      display: none !important;
+    }
+  }
 
 /* Optional: Larger screen adjustments */
 /* @media (min-width: 1400px) { ... } */
