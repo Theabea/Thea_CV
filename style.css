@@ -624,6 +624,13 @@ h2::after {
     margin-top: 0.5rem;
 }
 
+/* Hide on screens narrower than 768px */
+@media (max-width: 768px) {
+    .hide-on-mobile {
+      display: none !important;
+    }
+  }
+  
 
 footer p {
     color: var(--text-muted-color); /* Use variable */
