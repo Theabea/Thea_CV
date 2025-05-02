@@ -388,6 +388,8 @@ h2::after {
     overflow-x: hidden;      /* ✅ Prevent any accidental horizontal scroll */
 }
 
+
+
 /* Skills should be merged */
 .skills {
     display: flex;
