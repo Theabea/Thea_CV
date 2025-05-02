@@ -388,41 +388,8 @@ h2::after {
     overflow-x: hidden;      /* ✅ Prevent any accidental horizontal scroll */
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .about-content {
-    padding: 1.5rem 1rem;
-    margin: 1rem;
-    flex-direction: column;
-  }
-
-  .about-text {
-    min-width: 100%;
-  }
-
-  .skills {
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-}
-
 /* Skills should be merged */
 .skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .skill {
-    background: var(--primary-light);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-  
-  .skills {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -436,14 +403,40 @@ h2::after {
     color: var(--white);
     font-size: 0.9rem;
     font-weight: 500;
-    box-shadow: 0 2px 5px rgba(8, 157, 127, 0.2); /* Adjusted shadow color */
+    white-space: nowrap; /* Prevent text wrap */
+    box-shadow: 0 2px 5px rgba(8, 157, 127, 0.2);
     transition: var(--transition);
 }
 
 .skill:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(8, 157, 127, 0.3); /* Adjusted shadow color */
+    box-shadow: 0 5px 15px rgba(8, 157, 127, 0.3);
 }
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+
+    .about-content {
+        padding: 1.5rem 1rem;
+        margin: 1rem;
+        flex-direction: column;
+      }
+    
+      .about-text {
+        min-width: 100%;
+      }
+
+    .skills {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .skill {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
 
 
 /* --- Projects Section --- */
