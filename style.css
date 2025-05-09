@@ -90,7 +90,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     max-width: var(--container-max-width);
-    margin: 0 auto;
     padding: 1rem var(--nav-padding-x);
 
     /* --- Glass Effect Properties ADDED to Nav --- */
@@ -632,8 +631,6 @@ h2::after {
 }
 
 
-  
-
 footer p {
     color: var(--text-muted-color); /* Use variable */
 }
@@ -670,6 +667,11 @@ footer p {
 .hidden-text.show {
     max-height: 500px; /* Adjust as needed */
 }
+
+.hidden-text p {
+    margin: 4px 0; /* adjust the number as needed */
+}
+
 
 
 /* ==========================================================================
